@@ -1,3 +1,56 @@
 h1{
-    color: red;
+    color: #EE5C47;
+    font-size: 5rem;
+}
+
+nav .bolius-logo{
+    min-width: 18mm;
+    max-width: 30mm;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+nav .nav-icon{
+    height: 100%;
+    width: 8mm;
+}
+
+li{
+    list-style-type: none;
+    padding: 8px;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Merriweather', serif;
+}
+
+nav{
+}
+
+.coverImg{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.coverImg img{
+    width: 100%;
+}
+
+.nav-container{
+    margin: 0;
+    padding: 0;
 }
