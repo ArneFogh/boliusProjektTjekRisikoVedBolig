@@ -60,6 +60,12 @@ nav{
     padding: 0;
 }
 
+.topText p{
+    font-weight: lighter;
+    font-size: 15px;
+    color: #414141;
+}
+
 p{
     display: block;
     margin-block-start: 1em;
@@ -97,6 +103,17 @@ hr{
 }
 
 .writtenBy p{
+    font-weight: 300;
     font-size: 15px;
     color: #414141;
+}
+
+.mainText{
+    font-family: 'Merriweather', serif;
+
+}
+
+.mainText p{
+    font-weight: 300;
+    font-size: 17px;
 }
