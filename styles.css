@@ -3,6 +3,8 @@ h1{
     font-size: 5rem;
 }
 
+
+
 nav .bolius-logo{
     min-width: 18mm;
     max-width: 30mm;
@@ -53,6 +55,9 @@ nav{
 .nav-container{
     margin: 0;
     padding: 0;
+    position: sticky;
+    top: 0;
+    background-color: white;
 }
 
 .topText{
