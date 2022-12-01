@@ -1,3 +1,5 @@
+
+
 function locationsOnMap(){
     const map = L.map("map").setView([55.442797, 11.795722], 14.5);
 
@@ -9,14 +11,6 @@ function locationsOnMap(){
 
 
 
-    L.marker([55.442797, 11.795722]).addTo(map)
+        L.marker([55.442797, 11.795722]).addTo(map)
 
-}
-
-dawaAutocomplete.dawaAutocomplete(document.querySelector('#dawa-autocomplete-input'), {
-    select: function(selected) {
-        console.log('Valgt adresse: ' + selected.tekst);
-
-        locationsOnMap()
     }
-});

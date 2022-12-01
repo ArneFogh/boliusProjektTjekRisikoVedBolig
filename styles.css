@@ -123,17 +123,25 @@ hr{
     font-size: 17px;
 }
 
+
 .autocomplete-container {
     /* relative position for at de absolut positionerede forslag får korrekt placering.*/
     position: relative;
     width: 100%;
     max-width: 30em;
+    height: 100px;
 }
 
 .autocomplete-container input {
     /* Både input og forslag får samme bredde som omkringliggende DIV */
     width: 100%;
     box-sizing: border-box;
+    border: 1px solid #86BABF;
+    background-color: #CFE3E3;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #3E5959;
 }
 
 .dawa-autocomplete-suggestions {
@@ -141,7 +149,7 @@ hr{
     padding: 0;
     text-align: left;
     border-radius: 0.3125em;
-    background: #fcfcfc;
+    background: #86BABF;
     box-shadow: 0 0.0625em 0.15625em rgba(0,0,0,.15);
     position: absolute;
     left: 0;
@@ -157,7 +165,6 @@ hr{
     cursor: pointer;
     padding: 0.4em 0.6em;
     color: #333;
-    border: 0.0625em solid #ddd;
     border-bottom-width: 0;
 }
 
@@ -174,5 +181,19 @@ hr{
 
 .dawa-autocomplete-suggestions .dawa-autocomplete-suggestion.dawa-selected,
 .dawa-autocomplete-suggestions .dawa-autocomplete-suggestion:hover {
-    background: #f0f0f0;
+    background: #3E5959;
+    color: #f2f5f5;
+}
+
+.mapBox{
+    padding: 15px;
+    height: 500px;
+    margin: auto;
+}
+
+#map {
+    border-radius: 15px;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
