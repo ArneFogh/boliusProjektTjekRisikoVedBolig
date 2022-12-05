@@ -13,11 +13,10 @@ const tiles = L.tileLayer("https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 map.setView([55.87, 10.64], 6.5);
+
+
 function locationsOnMap(selected){
     map.setView([selected.data.y, selected.data.x], 14.5);
-
-
-
 
     L.marker([selected.data.y, selected.data.x]).addTo(map).bindPopup('Adresse:' +" "+ selected.tekst)
 
