@@ -21,7 +21,7 @@ function locationsOnMap(selected){
     L.marker([selected.data.y, selected.data.x]).addTo(map).bindPopup('Adresse:' +" "+ selected.tekst)
 
     for (let i = 0; i < stations.length; i++) {
-        L.circle([stations[i].Latitude, stations[i].Longitude]).addTo(map);
+        L.circle([stations[i].Latitude, stations[i].Longitude]).addTo(map).bindPopup(stations[i].Column2);
     }
 
 
