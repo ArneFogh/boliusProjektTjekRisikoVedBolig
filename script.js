@@ -1,9 +1,6 @@
 dawaAutocomplete.dawaAutocomplete(document.querySelector('#dawa-autocomplete-input'), {
     select: function(selected) {
         console.log('Valgt adresse: ' + selected.tekst +" "+ selected.data.x +" "+ selected.data.y);
-
-        const lat = selected.data.x;
-        const long = selected.data.y;
         locationsOnMap(selected);
     }
 });
@@ -18,7 +15,7 @@ function locationsOnMap(selected){
             '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map);
 
-    L.marker([selected.data.y, selected.data.x]).addTo(map)
+    L.marker([selected.data.y, selected.data.x]).addTo(map).bindPopup('Adresse:' +" "+ selected.tekst)
     /*
     L.icon([55.439519, 11.793025]).addTo(map).bindPopup(`<h2>Netto</h2>
         <hr>
