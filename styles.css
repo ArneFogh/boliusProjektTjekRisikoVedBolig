@@ -263,17 +263,18 @@ hr{
 .table {
     font-family: "Fira Sans", sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    margin: auto;
+    width: 80%;
 }
 
 .tableContainer{
-    width: 99%;
+    width: 100%;
 }
 
 .table th {
     text-align: left;
-    border-top: 2px solid #009578;
-    border-bottom: 2px solid #009578;
+    border-top: 2px solid #468C8C;
+    border-bottom: 2px solid #468C8C;
 }
 
 .table td,
@@ -306,4 +307,19 @@ hr{
 
 .politic.politicClicked{
     display: block;
+}
+
+.chartBox{
+    height: 400px;
+    width: auto;
+}
+
+.politic h2{
+    color: #EE5C47;
+    padding-left: 15px;
+}
+
+.Nearby h2{
+    color: #EE5C47;
+    padding-left: 15px;
 }

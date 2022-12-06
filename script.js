@@ -18,6 +18,17 @@ const tiles = L.tileLayer("https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.
 map.setView([55.87, 10.64], 6.5);
 
 
+let shoppingCart = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/4297/4297127.png',
+
+    iconSize:     [25, 25], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+
+
 function locationsOnMap(selected){
     map.setView([selected.data.y, selected.data.x], 14.5);
 
@@ -32,7 +43,7 @@ function locationsOnMap(selected){
         const navn = grocery[i].Navn;
         const address = grocery[i].Adresse;
         const distance = grocery[i].Afstand
-        L.marker([grocery[i].Latitude, grocery[i].Longitude]).addTo(map).bindPopup(`<h3>${navn}</h3>
+        L.marker([grocery[i].Latitude, grocery[i].Longitude], {icon: shoppingCart}).addTo(map).bindPopup(`<h3>${navn}</h3>
         <hr>
         <p>Adresse: ${address}</p>
         <p>Afstand i meter: ${distance}</p>`);
