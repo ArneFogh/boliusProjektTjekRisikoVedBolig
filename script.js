@@ -3,50 +3,8 @@ dawaAutocomplete.dawaAutocomplete(document.querySelector('#dawa-autocomplete-inp
 
         console.log('Valgt adresse: ' + selected.tekst +" "+ selected.data.x +" "+ selected.data.y);
         locationsOnMap(selected);
-        // CHART
-        politikOverskrift = document.getElementById("politikOverskrift")
-        politikBread = document.getElementById("politikBread")
-        politikOverskrift.innerHTML = 'Dagmarsgade 42 hører til afstemningsområdet Ringsted Kommune, hvor der i 2022 blev optalt 20.780 gyldige stemmer.'
-        politikBread.innerHTML = 'Partiet med flest stemmer til folketingsvalget i 2022 i Ringsted kommune er Socialdemokratiet med 5694 (27,4%) af stemmerne.'
-        const ctx = document.querySelector('#valgdatachart').getContext('2d');
-        const chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Socialdemokratiet', 'Venstre', 'Moderaterne', 'SF', 'Danmarksdemokraterne', 'De Konservative', 'Liberal Alliance', 'Nye Borgerlige', 'Enhedslisten', 'Dansk Folkeparti', 'Radikale Venstre', 'Alternativet', 'Frie Grønne', 'Kristendemokraterne'],
-                datasets: [{
-                    label: 'Antal stemmer',
-                    data: [5694, 2645, 2193, 1970, 1737, 1652, 1296, 900, 727, 710, 522, 422, 199, 70],
-                    backgroundColor: ["red", "blue", "purple", "lightpink", "lightblue", "green", "turquoise", "lightblue", "lightpink", "lightblue", "lightpink", "lightgreen", "lightgreen", "lightbrown"],
-                },
-                ]
-
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        grid: {
-                            display: false
-                        }
-                    },
-                    y: {
-                        grid: {
-                            display: false
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        position: "bottom"
-                    },
-                    title: {
-                        display: true,
-                        text: 'Folketingsvalg i Ringsted kommune 2022'
-                    }
-                }
-            },
-        })
+        politicChart();
+        tabelNearBy();
 
     }
 });
@@ -78,7 +36,49 @@ function locationsOnMap(selected){
 
 
 function politicChart(){
+    politikOverskrift = document.getElementById("politikOverskrift")
+    politikBread = document.getElementById("politikBread")
+    politikOverskrift.innerHTML = 'Dagmarsgade 42 hører til afstemningsområdet Ringsted Kommune, hvor der i 2022 blev optalt 20.780 gyldige stemmer.'
+    politikBread.innerHTML = 'Partiet med flest stemmer til folketingsvalget i 2022 i Ringsted kommune er Socialdemokratiet med 5694 (27,4%) af stemmerne.'
+    const ctx = document.querySelector('#valgdatachart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Socialdemokratiet', 'Venstre', 'Moderaterne', 'SF', 'Danmarksdemokraterne', 'De Konservative', 'Liberal Alliance', 'Nye Borgerlige', 'Enhedslisten', 'Dansk Folkeparti', 'Radikale Venstre', 'Alternativet', 'Frie Grønne', 'Kristendemokraterne'],
+            datasets: [{
+                label: 'Antal stemmer',
+                data: [5694, 2645, 2193, 1970, 1737, 1652, 1296, 900, 727, 710, 522, 422, 199, 70],
+                backgroundColor: ["red", "blue", "purple", "lightpink", "lightblue", "green", "turquoise", "lightblue", "lightpink", "lightblue", "lightpink", "lightgreen", "lightgreen", "lightbrown"],
+            },
+            ]
 
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: "bottom"
+                },
+                title: {
+                    display: true,
+                    text: 'Folketingsvalg i Ringsted kommune 2022'
+                }
+            }
+        },
+    })
 
 }
 
@@ -95,6 +95,11 @@ function burgerFunction() {
 }
 
 //Tabel
+
+const nearByTabel = document.querySelector(".Nearby");
+
+function tabelNearBy(){
+    nearByTabel.classList.add("NearbyClicked")
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".search-input").forEach((inputField) => {
         const tableRows = inputField
@@ -122,4 +127,4 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-});
+})}

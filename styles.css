@@ -286,3 +286,11 @@ hr{
     height: 100px;
     width: 100%;
 }
+
+.Nearby{
+    display: none;
+}
+
+.Nearby.NearbyClicked{
+    display: block;
+}
