@@ -263,6 +263,11 @@ hr{
 .table {
     font-family: "Fira Sans", sans-serif;
     border-collapse: collapse;
+    width: 100%;
+}
+
+.tableContainer{
+    width: 99%;
 }
 
 .table th {
@@ -292,5 +297,13 @@ hr{
 }
 
 .Nearby.NearbyClicked{
+    display: block;
+}
+
+.politic{
+    display: none;
+}
+
+.politic.politicClicked{
     display: block;
 }

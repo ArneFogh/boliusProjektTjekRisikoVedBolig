@@ -27,15 +27,24 @@ function locationsOnMap(selected){
         L.circle([stations[i].Latitude, stations[i].Longitude]).addTo(map).bindPopup(stations[i].Column2);
     }
 
+
     for (let i = 0; i < grocery.length; i++) {
-        L.marker([grocery[i].Latitude, grocery[i].Longitude]).addTo(map).bindPopup(grocery[i].Navn + '<p>');
+        const navn = grocery[i].Navn;
+        const address = grocery[i].Adresse;
+        const distance = grocery[i].Afstand
+        L.marker([grocery[i].Latitude, grocery[i].Longitude]).addTo(map).bindPopup(`<h3>${navn}</h3>
+        <hr>
+        <p>Adresse: ${address}</p>
+        <p>Afstand i meter: ${distance}</p>`);
     }
 
 
 }
 
+const politic = document.querySelector(".politic");
 
 function politicChart(){
+    politic.classList.add("politicClicked")
     politikOverskrift = document.getElementById("politikOverskrift")
     politikBread = document.getElementById("politikBread")
     politikOverskrift.innerHTML = 'Dagmarsgade 42 hører til afstemningsområdet Ringsted Kommune, hvor der i 2022 blev optalt 20.780 gyldige stemmer.'
@@ -100,31 +109,31 @@ const nearByTabel = document.querySelector(".Nearby");
 
 function tabelNearBy(){
     nearByTabel.classList.add("NearbyClicked")
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".search-input").forEach((inputField) => {
-        const tableRows = inputField
-            .closest("table")
-            .querySelectorAll("tbody > tr");
-        const headerCell = inputField.closest("th");
-        const otherHeaderCells = headerCell.closest("tr").children;
-        const columnIndex = Array.from(otherHeaderCells).indexOf(headerCell);
-        const searchableCells = Array.from(tableRows).map(
-            (row) => row.querySelectorAll("td")[columnIndex]
-        );
 
-        inputField.addEventListener("input", () => {
-            const searchQuery = inputField.value.toLowerCase();
+        document.querySelectorAll(".search-input").forEach((inputField) => {
+         const tableRows = inputField
+                .closest("table")
+                .querySelectorAll("tbody > tr");
+            const headerCell = inputField.closest("th");
+            const otherHeaderCells = headerCell.closest("tr").children;
+            const columnIndex = Array.from(otherHeaderCells).indexOf(headerCell);
+            const searchableCells = Array.from(tableRows).map(
+                (row) => row.querySelectorAll("td")[columnIndex]
+            );
 
-            for (const tableCell of searchableCells) {
-                const row = tableCell.closest("tr");
-                const value = tableCell.textContent.toLowerCase().replace(",", "");
+            inputField.addEventListener("input", () => {
+                const searchQuery = inputField.value.toLowerCase();
 
-                row.style.visibility = null;
+                for (const tableCell of searchableCells) {
+                    const row = tableCell.closest("tr");
+                    const value = tableCell.textContent.toLowerCase().replace(",", "");
 
-                if (value.search(searchQuery) === -1) {
-                    row.style.visibility = "collapse";
+                    row.style.visibility = null;
+
+                    if (value.search(searchQuery) === -1) {
+                        row.style.visibility = "collapse";
+                    }
                 }
-            }
+            });
         });
-    });
-})}
+}
