@@ -8,7 +8,6 @@
     <title>Risiko ved boligkøb</title>
 
     <link rel="stylesheet" href="styles.css">
-
     <link
             rel="stylesheet"
             href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
@@ -20,7 +19,9 @@
             integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
             crossorigin=""
     ></script>
-
+    <script
+            src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js">
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -90,12 +91,16 @@
 </div>
 
 <section class="politic">
-    <h2>Hvad stemmer folk i dit område?</h2>
+    <h2>Hvad stemmer folk i dit område til folketingsvalg?</h2>
     <hr>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, aspernatur ducimus, eius in iure nostrum quis ratione sequi soluta ullam unde voluptates voluptatibus? Facere quia voluptate voluptatem voluptates! Corporis enim et numquam temporibus? Alias animi cupiditate, doloremque fuga fugiat maxime modi nemo quaerat quam quis reiciendis sapiente, sunt vel voluptatum.</p>
     <br>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis eligendi, impedit iure magni maiores odio sed? Accusamus atque consequatur corporis ea earum eius eos laboriosam nisi nulla, officia. Ab consectetur cupiditate delectus deserunt dignissimos enim ex expedita harum ipsa ipsum, magnam maxime minima molestias numquam quaerat qui quis reprehenderit ullam voluptate voluptatibus. A adipisci amet assumenda consectetur consequuntur cum dolorem eum fugiat fugit ipsam labore laudantium magni minus molestias mollitia nisi nobis perferendis placeat quam qui quia quidem quod ratione, reiciendis rem reprehenderit repudiandae sapiente sed tempora totam vel veniam voluptas voluptatem. Accusantium aliquam autem, consequatur culpa, eos fugiat illum libero nulla perferendis quas quos rem sapiente similique sunt ut? Aspernatur ducimus esse et harum maxime minima nam perspiciatis veniam.</p>
-
+    <p id="politikOverskrift"></p>
+    <br>
+    <p></p>
+    <div style="height: 400px; width: auto">
+        <canvas id="valgdatachart"></canvas>
+    </div>
+    <p id="politikBread"></p>
 </section>
 <div class="bgc"></div>
 
