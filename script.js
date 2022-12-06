@@ -47,6 +47,7 @@ dawaAutocomplete.dawaAutocomplete(document.querySelector('#dawa-autocomplete-inp
                 }
             },
         })
+
     }
 });
 
@@ -68,9 +69,18 @@ function locationsOnMap(selected){
         L.circle([stations[i].Latitude, stations[i].Longitude]).addTo(map).bindPopup(stations[i].Column2);
     }
 
+    for (let i = 0; i < grocery.length; i++) {
+        L.marker([grocery[i].Latitude, grocery[i].Longitude]).addTo(map).bindPopup(grocery[i].Navn + '<p>');
+    }
+
 
 }
 
+
+function politicChart(){
+
+
+}
 
 
 
