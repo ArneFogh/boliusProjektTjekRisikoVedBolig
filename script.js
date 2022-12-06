@@ -27,6 +27,15 @@ let shoppingCart = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
+let drugstoreIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/4286/4286462.png',
+
+    iconSize:     [25, 25], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
 
 
 function locationsOnMap(selected){
@@ -44,6 +53,16 @@ function locationsOnMap(selected){
         const address = grocery[i].Adresse;
         const distance = grocery[i].Afstand
         L.marker([grocery[i].Latitude, grocery[i].Longitude], {icon: shoppingCart}).addTo(map).bindPopup(`<h3>${navn}</h3>
+        <hr>
+        <p>Adresse: ${address}</p>
+        <p>Afstand i meter: ${distance}</p>`);
+    }
+
+    for (let i = 0; i < drugstore.length; i++) {
+        const navn = drugstore[i].Navn;
+        const address = drugstore[i].Adresse;
+        const distance = drugstore[i].Afstand
+        L.marker([drugstore[i].Latitude, drugstore[i].Longitude], {icon: drugstoreIcon}).addTo(map).bindPopup(`<h3>${navn}</h3>
         <hr>
         <p>Adresse: ${address}</p>
         <p>Afstand i meter: ${distance}</p>`);
