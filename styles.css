@@ -203,6 +203,11 @@ hr{
     height: 100%;
 }
 
+.bgc{
+    height: 70px;
+    background-color: #CFE3E3;
+}
+
 
 /* Style the navigation menu */
 #burgerDiv {
