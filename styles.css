@@ -209,6 +209,14 @@ hr{
 }
 
 
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 /* Style the navigation menu */
 #burgerDiv {
     overflow: hidden;
@@ -223,11 +231,12 @@ hr{
 
 /* Style navigation menu links */
 #burgerDiv a {
-    color: white;
+    color: black;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
     display: block;
+    box-sizing: border-box;
 }
 
 /* Style the hamburger menu */
@@ -247,6 +256,6 @@ hr{
 
 /* Style the active link (or home/logo) */
 #burgerDiv {
-    background-color: #04AA6D;
-    color: white;
+    background-color: #DDEBEB;
+    color: black;
 }

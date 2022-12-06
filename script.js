@@ -31,6 +31,7 @@ function locationsOnMap(selected){
 function burgerFunction() {
     const x = document.querySelector("#burgerDiv");
     if (x.style.display === "block") {
+        console.log("hej")
         x.style.display = "none";
     } else {
         x.style.display = "block";
