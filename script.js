@@ -36,6 +36,42 @@ let drugstoreIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
+let hospitalIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/3307/3307107.png',
+
+    iconSize:     [25, 25], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+let kindergardenIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/8469/8469812.png',
+
+    iconSize:     [25, 25], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+let resturantIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/638/638523.png',
+
+    iconSize:     [25, 25], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+let schoolIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/991/991922.png',
+
+    iconSize:     [25, 25], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
 
 
 function locationsOnMap(selected){
@@ -67,6 +103,47 @@ function locationsOnMap(selected){
         <p>Adresse: ${address}</p>
         <p>Afstand i meter: ${distance}</p>`);
     }
+
+    for (let i = 0; i < hospital.length; i++) {
+        const navn = hospital[i].Navn;
+        const address = hospital[i].Adresse;
+        const distance = hospital[i].Afstand
+        L.marker([hospital[i].Latitude, hospital[i].Longitude], {icon: hospitalIcon}).addTo(map).bindPopup(`<h3>${navn}</h3>
+        <hr>
+        <p>Adresse: ${address}</p>
+        <p>Afstand i meter: ${distance}</p>`);
+    }
+
+    for (let i = 0; i < kindergarden.length; i++) {
+        const navn = kindergarden[i].Navn;
+        const address = kindergarden[i].Adresse;
+        const distance = kindergarden[i].Afstand
+        L.marker([kindergarden[i].Latitude, kindergarden[i].Longitude], {icon: kindergardenIcon}).addTo(map).bindPopup(`<h3>${navn}</h3>
+        <hr>
+        <p>Adresse: ${address}</p>
+        <p>Afstand i meter: ${distance}</p>`);
+    }
+
+    for (let i = 0; i < resturants.length; i++) {
+        const navn = resturants[i].Navn;
+        const address = resturants[i].Adresse;
+        const distance = resturants[i].Afstand
+        L.marker([resturants[i].Latitude, resturants[i].Longitude], {icon: resturantIcon}).addTo(map).bindPopup(`<h3>${navn}</h3>
+        <hr>
+        <p>Adresse: ${address}</p>
+        <p>Afstand i meter: ${distance}</p>`);
+    }
+
+    for (let i = 0; i < schools.length; i++) {
+        const navn = schools[i].Navn;
+        const address = schools[i].Adresse;
+        const distance = schools[i].Afstand
+        L.marker([schools[i].Latitude, schools[i].Longitude], {icon: schoolIcon}).addTo(map).bindPopup(`<h3>${navn}</h3>
+        <hr>
+        <p>Adresse: ${address}</p>
+        <p>Afstand i meter: ${distance}</p>`);
+    }
+
 
 
 }
