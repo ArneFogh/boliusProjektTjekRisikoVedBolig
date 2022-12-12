@@ -1,6 +1,6 @@
 let xDataglobal
 let yDataglobal
-
+// Dawaautocomplete api, all addresses in Denmark
 dawaAutocomplete.dawaAutocomplete(document.querySelector('#dawa-autocomplete-input'), {
     select: function(selected) {
 
@@ -18,6 +18,7 @@ dawaAutocomplete.dawaAutocomplete(document.querySelector('#dawa-autocomplete-inp
     }
 });
 
+// Standard view setting of map
 const map = L.map("map")
 const tiles = L.tileLayer("https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=89TnfA8v1mRlkatNruN7", {
     maxZoom: 19,
@@ -26,7 +27,7 @@ const tiles = L.tileLayer("https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.
 }).addTo(map);
 map.setView([55.87, 10.64], 6.5);
 
-
+// Shoppingcart icon
 let shoppingCart = L.icon({
     iconUrl: 'https://cdn-icons-png.flaticon.com/512/4297/4297127.png',
 
@@ -35,6 +36,8 @@ let shoppingCart = L.icon({
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
+
+// drugstore icon
 
 let drugstoreIcon = L.icon({
     iconUrl: 'https://cdn-icons-png.flaticon.com/512/4286/4286462.png',
@@ -45,6 +48,7 @@ let drugstoreIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
+// Hospital icon
 let hospitalIcon = L.icon({
     iconUrl: 'https://cdn-icons-png.flaticon.com/512/3307/3307107.png',
 
@@ -54,6 +58,7 @@ let hospitalIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
+// Kindergarden icon
 let kindergardenIcon = L.icon({
     iconUrl: 'https://cdn-icons-png.flaticon.com/512/8469/8469812.png',
 
@@ -63,6 +68,7 @@ let kindergardenIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
+// Resturant icon
 let resturantIcon = L.icon({
     iconUrl: 'https://cdn-icons-png.flaticon.com/512/638/638523.png',
 
@@ -72,6 +78,7 @@ let resturantIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
+// School icon
 let schoolIcon = L.icon({
     iconUrl: 'https://cdn-icons-png.flaticon.com/512/991/991922.png',
 
@@ -82,17 +89,20 @@ let schoolIcon = L.icon({
 });
 
 
-
+// Information on map and map settings
 function locationsOnMap(selected){
+    //Inserts the address to the map to center the address on the map
     map.setView([selected.data.y, selected.data.x], 14.5);
 
+    //Creates text on map
     L.marker([selected.data.y, selected.data.x]).addTo(map).bindPopup('Adresse:' +" "+ selected.tekst)
 
+    //Puts circles on all stations on map
     for (let i = 0; i < stations.length; i++) {
         L.circle([stations[i].Latitude, stations[i].Longitude]).addTo(map).bindPopup(stations[i].Column2);
     }
 
-
+// Puts information about grocery on map
     for (let i = 0; i < grocery.length; i++) {
         const navn = grocery[i].Navn;
         const address = grocery[i].Adresse;
@@ -102,7 +112,7 @@ function locationsOnMap(selected){
         <p>Adresse: ${address}</p>
         <p>Afstand i meter: ${distance}</p>`);
     }
-
+// Puts information about drugstore on map
     for (let i = 0; i < drugstore.length; i++) {
         const navn = drugstore[i].Navn;
         const address = drugstore[i].Adresse;
@@ -113,6 +123,7 @@ function locationsOnMap(selected){
         <p>Afstand i meter: ${distance}</p>`);
     }
 
+    // Puts information about hospital on map
     for (let i = 0; i < hospital.length; i++) {
         const navn = hospital[i].Navn;
         const address = hospital[i].Adresse;
@@ -123,6 +134,7 @@ function locationsOnMap(selected){
         <p>Afstand i meter: ${distance}</p>`);
     }
 
+    // Puts information about kindergarden on map
     for (let i = 0; i < kindergarden.length; i++) {
         const navn = kindergarden[i].Navn;
         const address = kindergarden[i].Adresse;
@@ -133,6 +145,7 @@ function locationsOnMap(selected){
         <p>Afstand i meter: ${distance}</p>`);
     }
 
+    // Puts information about resturants on map
     for (let i = 0; i < resturants.length; i++) {
         const navn = resturants[i].Navn;
         const address = resturants[i].Adresse;
@@ -143,6 +156,7 @@ function locationsOnMap(selected){
         <p>Afstand i meter: ${distance}</p>`);
     }
 
+    // Puts information about schools on map
     for (let i = 0; i < schools.length; i++) {
         const navn = schools[i].Navn;
         const address = schools[i].Adresse;
@@ -159,6 +173,7 @@ function locationsOnMap(selected){
 
 const politic = document.querySelector(".politic");
 
+// Chart over what the majority votes
 function politicChart(){
     politic.classList.add("politicClicked")
     politikOverskrift = document.getElementById("politikOverskrift")
@@ -208,7 +223,7 @@ function politicChart(){
 }
 
 
-
+//Dropdown burgermenu
 function burgerFunction() {
     const x = document.querySelector("#burgerDiv");
     if (x.style.display === "block") {
@@ -223,6 +238,7 @@ function burgerFunction() {
 
 const nearByTabel = document.querySelector(".Nearby");
 
+// What is near by tabel
 function tabelNearBy(){
     nearByTabel.classList.add("NearbyClicked")
 
@@ -254,6 +270,7 @@ function tabelNearBy(){
         });
 }
 
+// APi from rejseplan to get all nearby stations
 function testapi(data){
     fetch(`http://xmlopen.rejseplanen.dk/bin/rest.exe/stopsNearby?format=json&coordX=${xDataglobal.toFixed(0)}&coordY=${yDataglobal.toFixed(0)}`)
         .then(response => response.json())
@@ -271,6 +288,8 @@ function testapi(data){
             }
         })
 }
+
+// Chart over the crime stats of a specific area
 function crimechart() {
     const ctx2 = document.querySelector('#forbrydelserchart').getContext('2d');
     crimeOverskrift = document.getElementById("crimeOverskrift")
@@ -315,6 +334,7 @@ function crimechart() {
     })
 }
 
+// Links to where we got the information
 function renderDatablad() {
     databladOverskrift = document.getElementById("databladOverskrift")
     datalinks = document.getElementById("datalinks")
