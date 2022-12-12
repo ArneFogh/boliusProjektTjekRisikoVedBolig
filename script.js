@@ -1,3 +1,6 @@
+let xDataglobal
+let yDataglobal
+
 dawaAutocomplete.dawaAutocomplete(document.querySelector('#dawa-autocomplete-input'), {
     select: function(selected) {
 
@@ -5,6 +8,12 @@ dawaAutocomplete.dawaAutocomplete(document.querySelector('#dawa-autocomplete-inp
         locationsOnMap(selected);
         politicChart();
         tabelNearBy();
+        xDataglobal = selected.data.x * 1000000
+        yDataglobal = selected.data.y * 1000000
+        testapi();
+        crimechart();
+        renderDatablad();
+
 
     }
 });
@@ -243,4 +252,77 @@ function tabelNearBy(){
                 }
             });
         });
+}
+
+function testapi(data){
+    fetch(`http://xmlopen.rejseplanen.dk/bin/rest.exe/stopsNearby?format=json&coordX=${xDataglobal.toFixed(0)}&coordY=${yDataglobal.toFixed(0)}`)
+        .then(response => response.json())
+        .then((data) => { //console.log(data.LocationList.StopLocation))
+            rejseplanenOverskrift = document.getElementById("rejseplanenOverskrift").innerHTML = 'Hvilke stoppesteder ligger nær adressen?'
+            let stopName = data.LocationList.StopLocation
+            console.log(data)
+            for (let i = 0; i < stopName.length; i++) {
+                let print = document.createElement("span")
+                console.log(stopName[i].name)
+                document.getElementById("stationer").appendChild(print)
+                print.innerHTML = `
+                <p>${stopName[i].name} - ${stopName[i].distance} Meter</p>
+                `
+            }
+        })
+}
+function crimechart() {
+    const ctx2 = document.querySelector('#forbrydelserchart').getContext('2d');
+    crimeOverskrift = document.getElementById("crimeOverskrift")
+    crimeBread = document.getElementById("crimeBread")
+    crimeOverskrift.innerHTML = "Se hvor mange lovovertrædelser der har fundet sted i Ringsted kommune fra 1. Kvartal 2021 til og med 3. Kvartal 2022."
+    crimeBread.innerHTML = "Der er i Ringsted kommune fra 1. kvartal 2021 til og med 3. kvartal i 2022 registreret i alt 3459 lovovertrædelser. Vi kan se at lovovertrædelserne i 3. kvartal 2022, er faldet i forhold til samme tidspunkt året før."
+    const chart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ['2021/1', '2021/2', '2021/3', '2021/4', '2022/1', '2022/2', '2022/3'],
+            datasets: [{
+                label: 'Antal lovovertrædelser',
+                data: [327, 558, 614, 467, 467, 552, 474],
+                borderColor: ["red"]
+            },
+            ]
+
+        },
+        options: {
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: "bottom"
+                },
+                title: {
+                    display: true,
+                    text: 'Lovovertrædelser i Ringsted kommune pr kvartal fra 2021Q1 til 2022Q3'
+                }
+            }
+        },
+    })
+}
+
+function renderDatablad() {
+    databladOverskrift = document.getElementById("databladOverskrift")
+    datalinks = document.getElementById("datalinks")
+    databladOverskrift.innerHTML = "Datablad"
+    datalinks.innerHTML = "<br>" + "Info på apoteker er hentet på: https://www.apoteket.dk/alle-apoteker" + "<br>" + "<br>" +
+        "Info på supermarkeder er hentet på: https://www.netto.dk/find-butik/ og https://superbrugsen.coop.dk/find-butik/ " + "<br>" + "<br>" +
+        "Info på skoler og børnehaver er fundet via google søgning i nærområdet"
+        + "<br>" + "<br>" + "Data fra folketingsvalg grafen er hentet fra: https://www.statistikbanken.dk/statbank5a/selectvarval/define.asp?PLanguage=0&subword=tabsel&MainTable=FVKOM&PXSId=206363&tablestyle=&ST=SD&buttons=0"
+        + "<br>" + "<br>" + "Data fra lovovertrædelser grafen er hentet fra: https://www.statistikbanken.dk/2414"
+        + "<br>" + "<br>" + "Data fra stoppesteder er hentet fra Rejseplanens API: https://help.rejseplanen.dk/hc/article_attachments/115002672369/ReST_documentation_Rejseplanen_Latest.pdf"
 }

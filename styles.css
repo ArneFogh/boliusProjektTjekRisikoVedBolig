@@ -288,10 +288,6 @@ hr{
     outline: none;
     font-family: "Fira Sans", sans-serif;
 }
-#valgChart {
-    height: 100px;
-    width: 100%;
-}
 
 .Nearby{
     display: none;
@@ -322,4 +318,14 @@ hr{
 .Nearby h2{
     color: #EE5C47;
     padding-left: 15px;
+}
+#stationer {
+    height: 500px;
+    background-size: cover;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid orange;
+    border-radius: 10px;
+    overflow-y: auto;
 }
