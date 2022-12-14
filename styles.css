@@ -334,6 +334,18 @@ hr{
     color: #EE5C47;
     padding-left: 15px;
 }
+.crime h2 {
+    color: #EE5C47;
+    padding-left: 15px;
+}
+.rejseplanen h2{
+    color: #EE5C47;
+    padding-left: 15px;
+}
+dataBlad h2{
+    color: #EE5C47;
+    padding-left: 15px;
+}
 #stationer {
     height: 500px;
     background-size: cover;
