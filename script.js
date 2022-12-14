@@ -13,6 +13,8 @@ dawaAutocomplete.dawaAutocomplete(document.querySelector('#dawa-autocomplete-inp
         testapi();
         crimechart();
         renderDatablad();
+
+
     }
 });
 
@@ -251,15 +253,14 @@ function tabelNearBy(){
             });
         });
 }
-const rejseplanen = document.querySelector(".rejseplanen");
 
 function testapi(data){
-    rejseplanen.classList.add("rejseplanenClicked")
     fetch(`http://xmlopen.rejseplanen.dk/bin/rest.exe/stopsNearby?format=json&coordX=${xDataglobal.toFixed(0)}&coordY=${yDataglobal.toFixed(0)}`)
         .then(response => response.json())
         .then((data) => { //console.log(data.LocationList.StopLocation))
             rejseplanenOverskrift = document.getElementById("rejseplanenOverskrift").innerHTML = 'Hvilke stoppesteder ligger nær adressen?'
             let stopName = data.LocationList.StopLocation
+            console.log(data)
             for (let i = 0; i < stopName.length; i++) {
                 let print = document.createElement("span")
                 console.log(stopName[i].name)
@@ -270,9 +271,7 @@ function testapi(data){
             }
         })
 }
-const crime = document.querySelector(".crime");
 function crimechart() {
-    crime.classList.add("crimeClicked")
     const ctx2 = document.querySelector('#forbrydelserchart').getContext('2d');
     crimeOverskrift = document.getElementById("crimeOverskrift")
     crimeBread = document.getElementById("crimeBread")
@@ -317,7 +316,6 @@ function crimechart() {
 }
 
 function renderDatablad() {
-    politic.classList.add("politicClicked")
     databladOverskrift = document.getElementById("databladOverskrift")
     datalinks = document.getElementById("datalinks")
     databladOverskrift.innerHTML = "Datablad"
