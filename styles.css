@@ -304,6 +304,20 @@ hr{
 .politic.politicClicked{
     display: block;
 }
+.crime{
+    display: none;
+}
+
+.crime.crimeClicked{
+    display: block;
+}
+.rejseplanen{
+    display: none;
+}
+
+.rejseplanen.rejseplanenClicked{
+    display: block;
+}
 
 .chartBox{
     height: 400px;
@@ -328,4 +342,9 @@ hr{
     border: 5px solid orange;
     border-radius: 10px;
     overflow-y: auto;
+}
+.dataBlad {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: lightblue;
 }
