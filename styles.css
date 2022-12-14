@@ -314,7 +314,12 @@ hr{
 .rejseplanen.rejseplanenClicked{
     display: block;
 }
-
+.dataBlad {
+    display: none;
+}
+.dataBlad.dataBladClicked{
+    display: block;
+}
 .chartBox{
     height: 400px;
     width: auto;

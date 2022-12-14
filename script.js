@@ -254,7 +254,9 @@ function tabelNearBy(){
         });
 }
 
+const rejseplanen = document.querySelector(".rejseplanen")
 function testapi(data){
+    rejseplanen.classList.add("rejseplanenClicked")
     fetch(`http://xmlopen.rejseplanen.dk/bin/rest.exe/stopsNearby?format=json&coordX=${xDataglobal.toFixed(0)}&coordY=${yDataglobal.toFixed(0)}`)
         .then(response => response.json())
         .then((data) => { //console.log(data.LocationList.StopLocation))
@@ -271,7 +273,9 @@ function testapi(data){
             }
         })
 }
+const crime = document.querySelector(".crime")
 function crimechart() {
+    crime.classList.add("crimeClicked")
     const ctx2 = document.querySelector('#forbrydelserchart').getContext('2d');
     crimeOverskrift = document.getElementById("crimeOverskrift")
     crimeBread = document.getElementById("crimeBread")
@@ -315,7 +319,9 @@ function crimechart() {
     })
 }
 
+const dataBlad = document.querySelector(".dataBlad")
 function renderDatablad() {
+    dataBlad.classList.add("dataBladClicked")
     databladOverskrift = document.getElementById("databladOverskrift")
     datalinks = document.getElementById("datalinks")
     databladOverskrift.innerHTML = "Datablad"
