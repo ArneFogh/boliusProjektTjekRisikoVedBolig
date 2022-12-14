@@ -1,6 +1,8 @@
+//Global variabler for at få rejseplanens api til at vælge efter addressen man indtaster i søgefelt.
 let xDataglobal
 let yDataglobal
 
+//Search bar med autocomplete
 dawaAutocomplete.dawaAutocomplete(document.querySelector('#dawa-autocomplete-input'), {
     select: function(selected) {
 
@@ -13,11 +15,11 @@ dawaAutocomplete.dawaAutocomplete(document.querySelector('#dawa-autocomplete-inp
         testapi();
         crimechart();
         renderDatablad();
-
-
     }
 });
 
+
+//variabler til kortet for at tilføje datapunkter
 const map = L.map("map")
 const tiles = L.tileLayer("https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=89TnfA8v1mRlkatNruN7", {
     maxZoom: 19,
@@ -82,7 +84,7 @@ let schoolIcon = L.icon({
 });
 
 
-
+//Function til at sætte datapunkter på kortet
 function locationsOnMap(selected){
     map.setView([selected.data.y, selected.data.x], 14.5);
 
@@ -92,7 +94,7 @@ function locationsOnMap(selected){
         L.circle([stations[i].Latitude, stations[i].Longitude]).addTo(map).bindPopup(stations[i].Column2);
     }
 
-
+//Supermarkeder
     for (let i = 0; i < grocery.length; i++) {
         const navn = grocery[i].Navn;
         const address = grocery[i].Adresse;
@@ -102,7 +104,7 @@ function locationsOnMap(selected){
         <p>Adresse: ${address}</p>
         <p>Afstand i meter: ${distance}</p>`);
     }
-
+//apoteker
     for (let i = 0; i < drugstore.length; i++) {
         const navn = drugstore[i].Navn;
         const address = drugstore[i].Adresse;
@@ -112,7 +114,7 @@ function locationsOnMap(selected){
         <p>Adresse: ${address}</p>
         <p>Afstand i meter: ${distance}</p>`);
     }
-
+//hospitaler
     for (let i = 0; i < hospital.length; i++) {
         const navn = hospital[i].Navn;
         const address = hospital[i].Adresse;
@@ -122,7 +124,7 @@ function locationsOnMap(selected){
         <p>Adresse: ${address}</p>
         <p>Afstand i meter: ${distance}</p>`);
     }
-
+//børnehaver
     for (let i = 0; i < kindergarden.length; i++) {
         const navn = kindergarden[i].Navn;
         const address = kindergarden[i].Adresse;
@@ -132,7 +134,7 @@ function locationsOnMap(selected){
         <p>Adresse: ${address}</p>
         <p>Afstand i meter: ${distance}</p>`);
     }
-
+//restauranter
     for (let i = 0; i < resturants.length; i++) {
         const navn = resturants[i].Navn;
         const address = resturants[i].Adresse;
@@ -142,7 +144,7 @@ function locationsOnMap(selected){
         <p>Adresse: ${address}</p>
         <p>Afstand i meter: ${distance}</p>`);
     }
-
+//skoler
     for (let i = 0; i < schools.length; i++) {
         const navn = schools[i].Navn;
         const address = schools[i].Adresse;
@@ -157,8 +159,10 @@ function locationsOnMap(selected){
 
 }
 
+//Skjul politic indtil der bliver søgt
 const politic = document.querySelector(".politic");
 
+//Politic chart funktion
 function politicChart(){
     politic.classList.add("politicClicked")
     politikOverskrift = document.getElementById("politikOverskrift")
@@ -219,10 +223,10 @@ function burgerFunction() {
     }
 }
 
-//Tabel
-
+//skjul tabel indtil man søger
 const nearByTabel = document.querySelector(".Nearby");
 
+//Tabel over faciliteter i nærheden
 function tabelNearBy(){
     nearByTabel.classList.add("NearbyClicked")
 
@@ -254,7 +258,10 @@ function tabelNearBy(){
         });
 }
 
+//skjul stoppesteder indtil der bliver søgt
 const rejseplanen = document.querySelector(".rejseplanen")
+
+//rejseplanen API function der printer stoppesteder nær søgte addresse
 function testapi(data){
     rejseplanen.classList.add("rejseplanenClicked")
     fetch(`http://xmlopen.rejseplanen.dk/bin/rest.exe/stopsNearby?format=json&coordX=${xDataglobal.toFixed(0)}&coordY=${yDataglobal.toFixed(0)}`)
@@ -273,7 +280,11 @@ function testapi(data){
             }
         })
 }
+
+//skjul crime indtil der bliver søgt
 const crime = document.querySelector(".crime")
+
+//function der laver chart over lovovertrædelser
 function crimechart() {
     crime.classList.add("crimeClicked")
     const ctx2 = document.querySelector('#forbrydelserchart').getContext('2d');
@@ -319,7 +330,10 @@ function crimechart() {
     })
 }
 
+//Skjul datablad indtil der bliver søgt
 const dataBlad = document.querySelector(".dataBlad")
+
+//Function over datablad
 function renderDatablad() {
     dataBlad.classList.add("dataBladClicked")
     databladOverskrift = document.getElementById("databladOverskrift")
